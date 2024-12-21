@@ -79,10 +79,10 @@
 		</dependency>
 
 		<dependency>
-    <groupId>net.datafaker</groupId>
-    <artifactId>datafaker</artifactId>
-    <version>2.4.2</version>
-</dependency>
+			<groupId>net.datafaker</groupId>
+			<artifactId>datafaker</artifactId>
+			<version>2.4.2</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -130,8 +130,8 @@
 						</suiteXmlFiles>
 					</configuration>
 				</plugin>
-				
-				
+
+
 				<!-- default lifecycle, jar packaging: see
 				https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
 				<plugin>

@@ -43,7 +43,7 @@ public class ExtentReportManager {
 			Setup.extentTest.get().fail(MarkupHelper.createLabel(log, ExtentColor.RED));
 		}
 		
-		public static void logExceotionDetails(String log) {
+		public static void logExceptionDetails(String log) {
 			Setup.extentTest.get().fail(log);
 		}
 		
