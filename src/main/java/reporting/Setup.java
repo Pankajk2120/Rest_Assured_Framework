@@ -9,6 +9,8 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
 
+import edu.emory.mathcs.backport.java.util.Arrays;
+
 public class Setup implements ITestListener {
 	private static ExtentReports extentReports;
 	public static ThreadLocal<ExtentTest> extentTest = new ThreadLocal<>();
@@ -30,19 +32,15 @@ public class Setup implements ITestListener {
 		extentTest.set(test);
 	}
 	
-	public static void logPassDetails(String log) {
-		Setup.extentTest.get().pass(MarkupHelper.createLabel(log, ExtentColor.GREEN));
-	}
-	
-	public static void logFailureDetails(String log) {
-		Setup.extentTest.get().fail(MarkupHelper.createLabel(log, ExtentColor.RED));
-	}
-	
-	public static void logInfoDetails(String log) {
-		Setup.extentTest.get().info(MarkupHelper.createLabel(log, ExtentColor.GREY));
-	}
-	
-	public static void logWarningDetails(String log) {
-		Setup.extentTest.get().warning(MarkupHelper.createLabel(log, ExtentColor.YELLOW));
+	public void onTestFailure(ITestResult result) {
+		ExtentReportManager.logFailureDetails(result.getThrowable().getMessage());
+		String stackTrace = Arrays.toString(result.getThrowable().getStackTrace());
+		stackTrace = stackTrace.replaceAll(",", "<br>");
+		String formmatedTrace = "<details>\r\n"
+				+ "  <summary>Click Here To Exception Logs</summary>\n"
+				+ "  "+stackTrace+"\n"
+				+ "</details>\r\n"
+				+ "";
+		ExtentReportManager.logExceptionDetails(formmatedTrace);
 	}
 }
