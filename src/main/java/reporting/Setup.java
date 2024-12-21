@@ -41,6 +41,6 @@ public class Setup implements ITestListener {
 				+ "  "+stackTrace+"\n"
 				+ "</details>\r\n"
 				+ "";
-		ExtentReportManager.logExceptionDetails(formmatedTrace);
+		ExtentReportManager.logFailureDetails(formmatedTrace);
 	}
 }
