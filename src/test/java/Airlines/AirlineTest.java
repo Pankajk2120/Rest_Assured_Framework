@@ -3,10 +3,11 @@ import java.util.HashMap;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import RestUtils.RestUtils;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import utils.RestUtils;
 
 public class AirlineTest {
 	
@@ -23,8 +24,7 @@ public class AirlineTest {
 				+ "    \"head_quaters\": \"Qatar Airways Towers, Doha, Qatar\",\r\n"
 				+ "    \"website\": \"www.qatarairways.com\",\r\n"
 				+ "    \"established\": \"1994\"\r\n"
-				+ "}\r\n"
-				+ "";
+				+ "}";
 		
 		
 		Response response = RestUtils.performPost(endPoint,payLoad,new HashMap<>());
